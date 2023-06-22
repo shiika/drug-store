@@ -1,0 +1,15 @@
+:host {
+    ::ng-deep {
+        .ng-select:not(.table-select) {
+            z-index: 99999999999;
+        }
+        .ng-select.ng-select-single .ng-select-container {
+            border: none;
+            height: 40px;
+        }
+    }
+}
+
+button:disabled {
+    background-color: rgb(186 230 253);
+}

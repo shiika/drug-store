@@ -1,0 +1,36 @@
+<nav class="navbar flex items-center container mx-auto h-24 my-3">
+    <div class="navbar__logo">
+        <img src="../../../assets/logo.png" alt="logo image" width="70">
+        <p class="text-gray-400 mt-2">Gaza Central Company</p>
+    </div>
+    <div class="navbar__links px-20 flex items-center h-full">
+        <a class="pe-10 text-gray-500 h-full flex items-center" [routerLink]="['/']" routerLinkActive="font-bold navbar__links__item--active">
+        <span class="relative flex items-center h-full">
+            Home
+        </span>
+        </a>
+        <a class="pe-10 text-gray-500 h-full flex items-center" [routerLink]="['/admin']">
+        <span class="relative flex items-center h-full">
+            Administration
+        </span>
+        </a>
+        <a class="pe-10 text-gray-500 h-full flex items-center" [routerLink]="['/vision']">
+        <span class="relative flex items-center h-full">
+            Vision
+        </span>
+        </a>
+        <a class="pe-10 text-gray-500 h-full flex items-center" [routerLink]="['/other']"> 
+        <span class="relative flex items-center h-full">
+            Some Text
+        </span>
+        </a>
+    </div>
+
+    <div class="navbar__profile flex items-center justify-end flex-1">
+        <div class="navbar__profile__photo overflow-hidden rounded-full w-12 h-12">
+            <img src="../../../assets/IMG_20221009_135942.jpg" alt="profile photo" width="48">
+        </div>
+        <p class="ms-2 text-gray-800">Islam Abdelkarim</p>
+        <img src="../../../assets/icons8-notification.svg" class="ms-3" alt="notification icon" width="30">
+    </div>
+</nav>

@@ -1,0 +1,28 @@
+.navbar {
+    &__links {
+        &__item {
+            &--active {
+                span {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        background-color: var(--sky-600);
+                        width: 100%;
+                        height: 4px;
+                        border-radius: 8px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__profile {
+        &__photo {
+            // -webkit-box-shadow: -1px 6px 77px -11px rgba(5,5,5,1);
+            // -moz-box-shadow: -1px 6px 77px -11px rgba(5,5,5,1);
+            // box-shadow: -1px 6px 77px -11px rgba(5,5,5,1);
+        }
+    }
+}

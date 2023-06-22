@@ -1,0 +1,21 @@
+<div class="toolbar flex items-center mt-3">
+    <div class="toolbar__search w-1/4 flex flex-col">
+        <label for="search" class="text-gray-500 mb-1">Drug Name</label>
+        <ng-select [items]="items" 
+           bindLabel="name" 
+           bindValue="id"
+           [placeholder]="'Please select drug'"
+           notFoundText="No drugs found!"
+           class="flex-1 drop-shadow-lg bg-white"
+           [(ngModel)]="selectedItemId">
+        </ng-select>
+    </div>
+    <div class="toolbar__quantity flex flex-col ms-5 w-32 me-5">
+        <label for="quantity" class="text-gray-500 mb-1">Quantity</label>
+        <input type="number" placeholder="123" id="quantity" min="0" [(ngModel)]="quantity" name="quantity" class="drop-shadow-lg bg-white p-2 w-100">
+    </div>
+
+    <div class="toolbar__submit self-end">
+        <button type="submit" [disabled]="quantity <= 0 || !selectedItemId" class="rounded-none bg-sky-500 text-white py-2 px-4" (click)="addItem()">+ Add</button>
+    </div>
+</div>

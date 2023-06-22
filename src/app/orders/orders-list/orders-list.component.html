@@ -1,0 +1,16 @@
+<section class="container mx-auto">
+    <table class="border-collapse w-full border-none mt-3 dark:border-slate-500 bg-white bg-sky-200 text-sm shadow-sm">
+        <thead>
+            <tr>
+                <th class="border-none p-4 text-left" *ngFor="let col of cols">{{col.label}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-white" *ngFor="let order of orders">
+                <td class="p-4" [style]="{width: col.width || 'auto'}" *ngFor="let col of cols">
+                        {{ order[col.key] }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

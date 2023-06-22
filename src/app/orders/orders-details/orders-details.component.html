@@ -1,0 +1,53 @@
+<section class="order container mx-auto mt-5">
+    <h2 class="order__header text-2xl">Create Your Order Now</h2>
+    <app-search-toolbar [items]="drugs" (onOrderAdded)="submitOrder($event)"></app-search-toolbar>
+    <h3 class="text-lg my-4 bg-sky-300 text-white p-3 rounded-lg" *ngIf="duplicatedOrder">This drug has already been
+        added</h3>
+    <table class="border-collapse w-full border-none mt-3 dark:border-slate-500 bg-white bg-sky-200 text-sm shadow-sm">
+        <thead>
+            <tr>
+                <th class="border-none p-4 text-left" *ngFor="let col of cols">{{col.label}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-white" [class.alerting-order]="duplicatedOrder?.id == order.id" *ngFor="let order of orders">
+                <td class="p-4" [style]="{width: col.width || 'auto'}" *ngFor="let col of cols">
+                    <ng-container *ngIf="col.isModifiable; else normalText">
+                        <ng-container [ngSwitch]="col.type">
+                            <ng-container *ngSwitchCase="'text'">
+                                <ng-select [items]="drugs" bindLabel="name" bindValue="id"
+                                    [placeholder]="'Please select drug'" notFoundText="No drugs found!"
+                                    class="flex-1 table-select" [clearable]="false"
+                                    (change)="onEditOrderName($event, order)" [(ngModel)]="order.drugId">
+                                </ng-select>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'number'">
+                                <input type="number" (change)="onEditOrderQuantity(order)" placeholder="123"
+                                    [(ngModel)]="order.quantity" id="quantity" min="0" name="quantity"
+                                    class="bg-white p-2">
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                    <ng-template #normalText>
+                        {{ order[col.key] }}
+                    </ng-template>
+                </td>
+                <td>
+                    <button type="button" *ngIf="editingOrder?.id == order.id"
+                        class="rounded-none bg-lime-400 text-white py-2 px-4"
+                        (click)="updateOrder(order)">Update</button>
+                </td>
+                <td>
+                    <button type="button"
+                        class="rounded-full flex items-center justify-center bg-red-400 text-white py-2 px-4"
+                        [style]="{width: '32px', height: '32px'}" (click)="deleteOrder(order)">x</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="order__save mt-5">
+        <button type="button" *ngIf="orders?.length" class="rounded-none bg-lime-400 text-white py-2 px-4"
+            (click)="save()">Save Changes</button>
+    </div>
+</section>
